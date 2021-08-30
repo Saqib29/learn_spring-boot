@@ -3,6 +3,7 @@ package lexoro.ai.crud.dao;
 import lexoro.ai.crud.model.Person;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface PersonDao {
@@ -14,4 +15,12 @@ public interface PersonDao {
     }
 
     List<Person> selectAllPeople();
+
+    Optional<Person> selectPersonById(UUID id);
+
+    int deletePersonId(UUID id);
+
+    int updatePersonById(UUID id, Person person);
+
+
 }
