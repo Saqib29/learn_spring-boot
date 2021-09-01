@@ -1,12 +1,16 @@
 package com.example.demo.model;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PreDestroy;
 
 @Component
+@Scope(value = "prototype")
 public class Coder {
+
+    public String name;
 
     @Autowired
     Dog dog;
