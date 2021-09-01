@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MainController {
@@ -14,15 +15,19 @@ public class MainController {
     }
 
     @RequestMapping("/addProgrammer")
-    public String addProgrammer(@RequestParam int pId,
-                                @RequestParam String pName,
-                                @RequestParam String pLang,
-                                Model model){
+    public ModelAndView addProgrammer(@RequestParam("pId") int Id,
+                                      @RequestParam("pName") String name,
+                                      @RequestParam String pLang){
 
-        model.addAttribute("pName", pName);
-        model.addAttribute("pId", pId);
-        model.addAttribute("pLang", pLang);
 
-        return "ProgrammerInfo.html";
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("ProgrammerInfo.html");
+        mv.addObject("pName", name);
+        mv.addObject("pId", Id);
+        mv.addObject("pLang", pLang);
+
+
+        return mv;
     }
 }
