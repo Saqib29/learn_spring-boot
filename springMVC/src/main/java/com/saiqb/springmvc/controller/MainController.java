@@ -1,7 +1,9 @@
 package com.saiqb.springmvc.controller;
 
+import com.saiqb.springmvc.model.Programmer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,19 +17,8 @@ public class MainController {
     }
 
     @RequestMapping("/addProgrammer")
-    public ModelAndView addProgrammer(@RequestParam("pId") int Id,
-                                      @RequestParam("pName") String name,
-                                      @RequestParam String pLang){
+    public String addProgrammer(@ModelAttribute("p") Programmer programmer){
 
-
-        ModelAndView mv = new ModelAndView();
-        
-        mv.setViewName("ProgrammerInfo.html");
-        mv.addObject("pName", name);
-        mv.addObject("pId", Id);
-        mv.addObject("pLang", pLang);
-
-
-        return mv;
+        return "ProgrammerInfo.html";
     }
 }
