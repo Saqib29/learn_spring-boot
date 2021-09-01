@@ -1,10 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
 </head>
 <body>
-  <h1>Hello Saqib</h1>
+  <h1>Programer's Data</h1>
+
+  <form action="addProgrammer">
+      <h3>Enter Programmer's ID</h3>
+      <input type="text" name="pId"></input>
+      <h3>Enter Programmer's Name</h3>
+      <input type="text" name="pName"></input>
+      <h3>Enter Programmer's Language</h3>
+      <input type="text" name="pLang"></input>
+
+      <button type="submit">Add programmer</button>
+  </form>
 </body>
 </html>
