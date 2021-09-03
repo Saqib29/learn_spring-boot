@@ -1,6 +1,8 @@
 package com.saiqb.springmvc.controller;
 
 import com.saiqb.springmvc.model.Programmer;
+import com.saiqb.springmvc.repository.ProgrammerRepo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +14,9 @@ import java.util.List;
 @Controller
 @ControllerAdvice
 public class MainController {
+
+    @Autowired
+    ProgrammerRepo pr;
 
     @ModelAttribute
     public void welcome(Model m){
@@ -25,7 +30,7 @@ public class MainController {
 
     @PostMapping("/addProgrammer")
     public String addProgrammer(@ModelAttribute Programmer programmer){
-
+        pr.save(programmer);
         return "ProgrammerInfo.html";
     }
 

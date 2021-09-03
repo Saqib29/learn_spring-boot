@@ -1,8 +1,14 @@
 package com.saiqb.springmvc.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Programmer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pId;
+    @Column(name = "programmer_name")
     private String pName;
     private String pLang;
 
