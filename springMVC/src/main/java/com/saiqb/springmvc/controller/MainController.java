@@ -61,4 +61,20 @@ public class MainController {
         m.addAttribute("programmers", p);
         return "AllProgrammer.html";
     }
+
+    @PostMapping("/findByName")
+    public String findByName(@RequestParam String pName, Model m){
+        List<Programmer> p = pr.findProgrammer(pName);
+        m.addAttribute("programmers", p);
+
+        return "AllProgrammer.html";
+    }
+
+    @PostMapping("/findboth")
+    public String findWithBoth(@RequestParam String pName, @RequestParam String pLang, Model m){
+        List<Programmer> p = pr.findNL(pName, pLang);
+
+        m.addAttribute("programmers",p);
+        return "AllProgrammer.html";
+    }
 }
