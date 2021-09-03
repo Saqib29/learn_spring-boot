@@ -37,7 +37,7 @@
   </form>
 
   <hr>
-  <form action="updateProgrammer" method="get">
+  <form action="updateProgrammer" method="post">
       <h3>Enter Programmer's ID</h3>
       <input type="text" name="pId"></input>
       <h3>Enter Programmer's Name</h3>
@@ -46,6 +46,13 @@
       <input type="text" name="pLang"></input>
 
       <button type="submit">Update programmer</button>
+  </form>
+
+  <form action="findByLang" method="post">
+      <h3>Enter PLanguage</h3>
+      <input type="text" name="pLang"></input>
+
+      <button type="submit">Find by Language</button>
   </form>
 </body>
 </html>

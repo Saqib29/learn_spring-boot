@@ -43,7 +43,7 @@ public class MainController {
         return "redirect:/home";
     }
 
-    @GetMapping("/updateProgrammer")
+    @PostMapping("/updateProgrammer")
     public String updateProgrammer(@ModelAttribute Programmer programmer){
         Programmer p = pr.getById(programmer.getpId());
         p.setpName(programmer.getpName());
@@ -52,5 +52,13 @@ public class MainController {
         pr.save(p);
 
         return "ProgrammerInfo.html";
+    }
+
+    @PostMapping("/findByLang")
+    public String findByLang(@RequestParam String pLang, Model m){
+        List<Programmer> p = pr.findBypLang(pLang);
+
+        m.addAttribute("programmers", p);
+        return "AllProgrammer.html";
     }
 }
