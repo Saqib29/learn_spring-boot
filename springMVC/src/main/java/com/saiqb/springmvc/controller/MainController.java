@@ -18,11 +18,6 @@ public class MainController {
     @Autowired
     ProgrammerRepo pr;
 
-    @ModelAttribute
-    public void welcome(Model m){
-        m.addAttribute("msg", "Welcome to Spring Boot Tutorial");
-    }
-
     @GetMapping("/home")
     public String homePage(){
         return "HomePage.html";
@@ -31,17 +26,31 @@ public class MainController {
     @PostMapping("/addProgrammer")
     public String addProgrammer(@ModelAttribute Programmer programmer){
         pr.save(programmer);
+        return "redirect:/home";
+    }
+
+    @PostMapping("/findById")
+    public String findById(@RequestParam int pId, Model m){
+        Programmer p = pr.getOne(pId);
+        m.addAttribute("programmer",p);
+
         return "ProgrammerInfo.html";
     }
 
-    @GetMapping("/allProgrammer")
-    public String allProgrammer(Model m){
-        List<Programmer> p = new ArrayList<Programmer>();
-        p.add(new Programmer(101, "Zabir Rahman", "Java"));
-        p.add(new Programmer(102, "Saqib Aminul", "Python"));
-        p.add(new Programmer(103, "Aminul Islam Saqib", "JavaScript"));
+    @GetMapping("/deleteprogrammer")
+    public String deleteprogrammer(@RequestParam int pId){
+        pr.deleteById(pId);
+        return "redirect:/home";
+    }
 
-        m.addAttribute("programmers", p);
-        return "AllProgrammer.html";
+    @GetMapping("/updateProgrammer")
+    public String updateProgrammer(@ModelAttribute Programmer programmer){
+        Programmer p = pr.getById(programmer.getpId());
+        p.setpName(programmer.getpName());
+        p.setpLang(programmer.getpLang());
+
+        pr.save(p);
+
+        return "ProgrammerInfo.html";
     }
 }
