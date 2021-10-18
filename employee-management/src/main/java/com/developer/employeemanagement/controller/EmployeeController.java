@@ -30,7 +30,7 @@ public class EmployeeController {
         return employeeService.saveEmployee(employeeEntity);
     }
 
-    @PostMapping
+    @PutMapping
     public EmployeeEntity updateEmployee(@RequestBody EmployeeEntity employeeEntity){
         return employeeService.updateEmployee(employeeEntity);
     }
